@@ -30,18 +30,22 @@
             position: absolute;
             width: 200px;
             height: 200px;
-            background: url('https://media1.tenor.com/m/X3w-LOtBU-AAAAAd/roshhashanah-excited.gif') no-repeat center;
             background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
         }
     </style>
 </head>
-<body onload="changeBackground(); moveDvdLogo();">
-    <h1>Welcome to the Random Meme Zone!</h1>
+<body onload="changeBackground(); moveDvdLogo('dvdLogo');">
+    <h1>H kreatini einai super COOL!</h1>
     <img id="memeImage" class="meme-img" src="https://i.imgur.com/J3HkyGI.png" alt="Meme">
     <br>
     <button class="btn" onclick="changeMeme()">allagi parthenoy</button>
-    <button class="btn" onclick="rickRoll()">Pame GTA RP magka moy</button>
+    <button class="btn" onclick="xasisisisi()">Pame GTA RP magka moy</button>
     <button class="btn" onclick="alert('Gamo ton xristo kai tin panagia kai tin efthremia')">Doge Blessing</button>
+    <button class="btn" onclick="spawnDvdLogo()">Spawn More DVD GIFs</button>
+    <button class="btn" onclick="playLigdasSound()">Ligdas</button>
+    <button class="btn" onclick="playRandomSoundEffect()">Play Random Sound Effect</button> <!-- New Button -->
     
     <div class="dvd-logo" id="dvdLogo"></div>
     
@@ -52,12 +56,27 @@
             "https://i.imgur.com/wzKESsR.jpeg"
         ];
 
+        // List of GIFs for the DVD logos
+        const dvdGifs = [
+            "https://media1.tenor.com/m/X3w-LOtBU-AAAAAd/roshhashanah-excited.gif",
+            "https://media1.tenor.com/m/5Z7yJ7Z7yJ7AAAAC/dvd-logo.gif",
+            "https://media1.tenor.com/m/3Q2Q2Q2Q2Q2AAAAC/dvd-logo.gif",
+            "https://media1.tenor.com/m/4Z7yJ7Z7yJ7AAAAC/dvd-logo.gif"
+        ];
+
+        // List of your sound effects (replace with your direct links)
+        const soundEffects = [
+            "https://drive.google.com/file/d/1JwtTdT7w_sGpH_XlC7zKfsXPP5UL6uDr/view?usp=drive_link",
+            "https://drive.google.com/file/d/1ut8F7zOAU0B2UQhBRQGJ1K5Mjo4-EQ4l/view?usp=drive_link",
+            "https://drive.google.com/file/d/1velwswpHGMY5nAWhW3I4u1yR_O9dNDXB/view?usp=drive_link"
+        ];
+
         function changeMeme() {
             const randomIndex = Math.floor(Math.random() * memes.length);
             document.getElementById("memeImage").src = memes[randomIndex];
         }
 
-        function rickRoll() {
+        function xasisisisi() {
             window.location.href = "https://www.youtube.com/watch?v=odt6-6k6Aks";
         }
 
@@ -68,10 +87,11 @@
             }, 1000);
         }
 
-        function moveDvdLogo() {
-            const dvd = document.getElementById("dvdLogo");
-            let x = 100, y = 100;
-            let dx = 2, dy = 2; // Slowed down movement speed
+        function moveDvdLogo(id) {
+            const dvd = document.getElementById(id);
+            let x = Math.random() * (window.innerWidth - 200);
+            let y = Math.random() * (window.innerHeight - 200);
+            let dx = 2, dy = 2;
             function animate() {
                 x += dx;
                 y += dy;
@@ -82,6 +102,33 @@
                 requestAnimationFrame(animate);
             }
             animate();
+        }
+
+        function spawnDvdLogo() {
+            const newDvd = document.createElement("div");
+            newDvd.className = "dvd-logo";
+            newDvd.style.left = Math.random() * (window.innerWidth - 200) + 'px';
+            newDvd.style.top = Math.random() * (window.innerHeight - 200) + 'px';
+
+            // Assign a random GIF from the list
+            const randomGif = dvdGifs[Math.floor(Math.random() * dvdGifs.length)];
+            newDvd.style.backgroundImage = `url('${randomGif}')`;
+
+            document.body.appendChild(newDvd);
+            moveDvdLogo(newDvd.id);
+        }
+
+        // Function to play the Ligdas sound effect
+        function playLigdasSound() {
+            const audio = new Audio('https://your-direct-link.com/ligdas-sound.mp3'); // Replace with your sound file link
+            audio.play();
+        }
+
+        // Function to play a random sound effect
+        function playRandomSoundEffect() {
+            const randomIndex = Math.floor(Math.random() * soundEffects.length);
+            const audio = new Audio(soundEffects[randomIndex]);
+            audio.play();
         }
     </script>
 </body>
