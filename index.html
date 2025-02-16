@@ -3,19 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Random Meme Page</title>
+    <title>MITSARAS-SITE</title>
     <style>
+        /* Basic Reset */
+        body, h1, button, img, div {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body Styling */
         body {
-            font-family: Comic Sans MS, sans-serif;
+            font-family: 'Comic Sans MS', sans-serif;
             text-align: center;
             background-color: #f0f0f0;
-            transition: background 0.5s ease-in-out;
             overflow: hidden;
         }
+
+        /* Meme Image Styling */
         .meme-img {
             width: 300px;
             margin-top: 20px;
         }
+
+        /* Button Styling */
         .btn {
             padding: 10px;
             margin: 10px;
@@ -26,6 +37,8 @@
             color: white;
             border-radius: 5px;
         }
+
+        /* DVD Logo Styling */
         .dvd-logo {
             position: absolute;
             width: 200px;
@@ -36,8 +49,8 @@
         }
     </style>
 </head>
-<body onload="changeBackground(); moveDvdLogo('dvdLogo');">
-    <h1>H kreatini einai super COOL!</h1>
+<body>
+    <h1>Welcome to the Random Meme Zone!</h1>
     <img id="memeImage" class="meme-img" src="https://i.imgur.com/J3HkyGI.png" alt="Meme">
     <br>
     <button class="btn" onclick="changeMeme()">allagi parthenoy</button>
@@ -45,89 +58,42 @@
     <button class="btn" onclick="alert('Gamo ton xristo kai tin panagia kai tin efthremia')">Doge Blessing</button>
     <button class="btn" onclick="spawnDvdLogo()">Spawn More DVD GIFs</button>
     <button class="btn" onclick="playLigdasSound()">Ligdas</button>
-    <button class="btn" onclick="playRandomSoundEffect()">Play Random Sound Effect</button> <!-- New Button -->
-    
-    <div class="dvd-logo" id="dvdLogo"></div>
-    
+
+    <!-- Static DVD Logo -->
+    <div id="dvdLogo" class="dvd-logo" style="left: 100px; top: 100px; background-image: url('https://media1.tenor.com/m/X3w-LOtBU-AAAAAd/roshhashanah-excited.gif');"></div>
+
     <script>
+        // Array of meme images
         const memes = [
             "https://i.imgur.com/KrMLbOQ.jpeg",
             "https://i.imgur.com/ISbie3F.jpeg",
             "https://i.imgur.com/wzKESsR.jpeg"
         ];
 
-        // List of GIFs for the DVD logos
-        const dvdGifs = [
-            "https://media1.tenor.com/m/X3w-LOtBU-AAAAAd/roshhashanah-excited.gif",
-            "https://media1.tenor.com/m/5Z7yJ7Z7yJ7AAAAC/dvd-logo.gif",
-            "https://media1.tenor.com/m/3Q2Q2Q2Q2Q2AAAAC/dvd-logo.gif",
-            "https://media1.tenor.com/m/4Z7yJ7Z7yJ7AAAAC/dvd-logo.gif"
-        ];
-
-        // List of your sound effects (replace with your direct links)
-        const soundEffects = [
-            "https://drive.google.com/file/d/1JwtTdT7w_sGpH_XlC7zKfsXPP5UL6uDr/view?usp=drive_link",
-            "https://drive.google.com/file/d/1ut8F7zOAU0B2UQhBRQGJ1K5Mjo4-EQ4l/view?usp=drive_link",
-            "https://drive.google.com/file/d/1velwswpHGMY5nAWhW3I4u1yR_O9dNDXB/view?usp=drive_link"
-        ];
-
+        // Function to change the meme image
         function changeMeme() {
             const randomIndex = Math.floor(Math.random() * memes.length);
             document.getElementById("memeImage").src = memes[randomIndex];
         }
 
+        // Function to redirect to a YouTube video
         function xasisisisi() {
             window.location.href = "https://www.youtube.com/watch?v=odt6-6k6Aks";
         }
 
-        function changeBackground() {
-            const colors = ["#ff0000", "#ff8000", "#ffff00", "#80ff00", "#00ff80", "#0080ff", "#8000ff", "#ff0080"];
-            setInterval(() => {
-                document.body.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-            }, 1000);
-        }
-
-        function moveDvdLogo(id) {
-            const dvd = document.getElementById(id);
-            let x = Math.random() * (window.innerWidth - 200);
-            let y = Math.random() * (window.innerHeight - 200);
-            let dx = 2, dy = 2;
-            function animate() {
-                x += dx;
-                y += dy;
-                if (x + 200 >= window.innerWidth || x <= 0) dx = -dx;
-                if (y + 200 >= window.innerHeight || y <= 0) dy = -dy;
-                dvd.style.left = x + 'px';
-                dvd.style.top = y + 'px';
-                requestAnimationFrame(animate);
-            }
-            animate();
-        }
-
+        // Function to spawn a new DVD logo
         function spawnDvdLogo() {
             const newDvd = document.createElement("div");
             newDvd.className = "dvd-logo";
             newDvd.style.left = Math.random() * (window.innerWidth - 200) + 'px';
             newDvd.style.top = Math.random() * (window.innerHeight - 200) + 'px';
-
-            // Assign a random GIF from the list
-            const randomGif = dvdGifs[Math.floor(Math.random() * dvdGifs.length)];
-            newDvd.style.backgroundImage = `url('${randomGif}')`;
-
+            newDvd.style.backgroundImage = "url('https://media1.tenor.com/m/X3w-LOtBU-AAAAAd/roshhashanah-excited.gif')";
             document.body.appendChild(newDvd);
-            moveDvdLogo(newDvd.id);
         }
 
-        // Function to play the Ligdas sound effect
+        // Function to play a sound effect
         function playLigdasSound() {
-            const audio = new Audio('https://your-direct-link.com/ligdas-sound.mp3'); // Replace with your sound file link
-            audio.play();
-        }
-
-        // Function to play a random sound effect
-        function playRandomSoundEffect() {
-            const randomIndex = Math.floor(Math.random() * soundEffects.length);
-            const audio = new Audio(soundEffects[randomIndex]);
+            const audio = new Audio('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3'); // Replace with your sound file link
             audio.play();
         }
     </script>
