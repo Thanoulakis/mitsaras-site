@@ -28,9 +28,9 @@
         }
         .dvd-logo {
             position: absolute;
-            width: 100px;
-            height: 100px;
-            background: url('https://i.imgur.com/OXq2A8P.gif') no-repeat center;
+            width: 200px;
+            height: 200px;
+            background: url('https://media1.tenor.com/m/X3w-LOtBU-AAAAAd/roshhashanah-excited.gif') no-repeat center;
             background-size: contain;
         }
     </style>
@@ -71,12 +71,12 @@
         function moveDvdLogo() {
             const dvd = document.getElementById("dvdLogo");
             let x = 100, y = 100;
-            let dx = 4, dy = 4;
+            let dx = 2, dy = 2; // Slowed down movement speed
             function animate() {
                 x += dx;
                 y += dy;
-                if (x + 100 >= window.innerWidth || x <= 0) dx = -dx;
-                if (y + 100 >= window.innerHeight || y <= 0) dy = -dy;
+                if (x + 200 >= window.innerWidth || x <= 0) dx = -dx;
+                if (y + 200 >= window.innerHeight || y <= 0) dy = -dy;
                 dvd.style.left = x + 'px';
                 dvd.style.top = y + 'px';
                 requestAnimationFrame(animate);
