@@ -17,15 +17,18 @@
             font-family: 'Comic Sans MS', sans-serif;
             text-align: center;
             background-color: #f0f0f0;
-            background-image: url('https://example.com/your-uploaded-image.jpg'); /* Replace with your image URL */
+            background-image: url('https://i.imgur.com/nms09KJ.png'); /* Replace with your image URL */
             background-size: cover;
             overflow: hidden;
+            position: relative; /* Added for stacking context */
         }
 
         /* Meme Image Styling */
         .meme-img {
             width: 300px;
             margin-top: 20px;
+            z-index: 2; /* Ensures meme images are above GIFs */
+            position: relative;
         }
 
         /* Button Styling */
@@ -38,6 +41,8 @@
             background-color: #ff4500;
             color: white;
             border-radius: 5px;
+            z-index: 2; /* Ensures buttons are above GIFs */
+            position: relative;
         }
 
         /* DVD Logo Styling */
@@ -48,11 +53,12 @@
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center;
+            z-index: 1; /* Puts GIFs below other elements but above background */
         }
     </style>
 </head>
 <body>
-    <h1>Welcome to the Random Meme Zone!</h1>
+    <h1 style="z-index: 2; position: relative;">Welcome to the Random Meme Zone!</h1>
     <img id="memeImage" class="meme-img" src="https://i.imgur.com/J3HkyGI.png" alt="Meme">
     <br>
     <button class="btn" onclick="changeMeme()">allagi parthenoy</button>
@@ -75,15 +81,14 @@
         // Array of DVD logo URLs
         const dvdLogos = [
             "https://media1.tenor.com/m/X3w-LOtBU-AAAAAd/roshhashanah-excited.gif",
-            "https://media1.tenor.com/m/XYPSFvI2MaIAAAAd/hahahahah-gahahahaha.gif",
-            "https://media1.tenor.com/m/wsyPM67lh18AAAAd/friday.gif"
+            "https://media1.tenor.com/m/V2NAOALbN-AAAAAd/dvd-bouncing-logo.gif",
+            "https://media1.tenor.com/m/4y5lX0H7-kAAAAAd/dvd-logo.gif"
         ];
 
         // Array of audio URLs
         const audioUrls = [
             "https://docs.google.com/uc?export=download&id=1JwtTdT7w_sGpH_XlC7zKfsXPP5UL6uDr", // Example modified link
-            "https://docs.google.com/uc?export=download&id=1ut8F7zOAU0B2UQhBRQGJ1K5Mjo4-EQ4l",
-            "https://docs.google.com/uc?export=download&id=1velwswpHGMY5nAWhW3I4u1yR_O9dNDXB" // Replace with actual file IDs
+            "https://docs.google.com/uc?export=download&id=YOUR_OTHER_FILE_ID" // Replace with actual file IDs
         ];
 
         // Function to change the meme image
