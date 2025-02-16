@@ -62,27 +62,16 @@
     <h1 style="z-index: 2; position: relative;">Klepsame tis tirotreles apo ta lidl!</h1>
     <img id="memeImage" class="meme-img" src="https://i.imgur.com/J3HkyGI.png" alt="Meme">
     <br>
-    <button class="btn" onclick="changeMeme()" style="animation: glowing 1.5s infinite;">allagi parthenoy</button>
-    <button class="btn" onclick="xasisisisi()" style="animation: glowing 1.5s infinite;">Pame GTA RP magka moy</button>
-    <button class="btn" onclick="alert('Geia sou re Jimmara kala gamisa')" style="animation: glowing 1.5s infinite;">min</button>
-    <button class="btn" onclick="spawnDvdLogo()" style="animation: glowing 1.5s infinite;">Spawn More DVD GIFs</button>
-    <button class="btn" onclick="playLigdasSound()" style="animation: glowing 1.5s infinite;">Ligdas</button>
+    <button class="btn" onclick="changeMeme()">allagi parthenoy</button>
+    <button class="btn" onclick="xasisisisi()">Pame GTA RP magka moy</button>
+    <button class="btn" onclick="alert('Geia sou re Jimmara kala gamisa')">min</button>
+    <button class="btn" onclick="spawnDvdLogo()">Spawn More DVD GIFs</button>
+    <button class="btn" onclick="playLigdasSound()">Ligdas</button>
 
     <!-- Static DVD Logo -->
     <div id="dvdLogo" class="dvd-logo" style="left: 100px; top: 100px; background-image: url('https://media1.tenor.com/m/X3w-LOtBU-AAAAAd/roshhashanah-excited.gif');"></div>
 
     <script>
-        // Keyframes for button glow effect
-        const styleElement = document.createElement('style');
-        styleElement.innerHTML = `
-            @keyframes glowing {
-                0% { box-shadow: 0 0 5px #ff4500; }
-                50% { box-shadow: 0 0 20px #ff4500, 0 0 30px #ff4500, 0 0 40px #ff4500, 0 0 50px #ff4500; }
-                100% { box-shadow: 0 0 5px #ff4500; }
-            }
-        `;
-        document.head.appendChild(styleElement);
-
         // Array of meme images
         const memes = [
             "https://i.imgur.com/KrMLbOQ.jpeg",
@@ -103,6 +92,9 @@
             "https://docs.google.com/uc?export=download&id=YOUR_OTHER_FILE_ID" // Replace with actual file IDs
         ];
 
+        // Counter to keep track of the current GIF
+        let currentGifIndex = 0;
+
         // Function to change the meme image
         function changeMeme() {
             const randomIndex = Math.floor(Math.random() * memes.length);
@@ -114,15 +106,18 @@
             window.location.href = "https://www.youtube.com/watch?v=odt6-6k6Aks";
         }
 
-        // Function to spawn a new DVD logo
+        // Function to spawn a new DVD logo in order
         function spawnDvdLogo() {
             const newDvd = document.createElement("div");
             newDvd.className = "dvd-logo";
             newDvd.style.left = Math.random() * (window.innerWidth - 200) + 'px';
             newDvd.style.top = Math.random() * (window.innerHeight - 200) + 'px';
-            const randomLogo = dvdLogos[Math.floor(Math.random() * dvdLogos.length)];
-            newDvd.style.backgroundImage = `url('${randomLogo}')`;
+            newDvd.style.backgroundImage = `url('${dvdLogos[currentGifIndex]}')`;
             document.body.appendChild(newDvd);
+
+            // Update the GIF index to the next one
+            currentGifIndex = (currentGifIndex + 1) % dvdLogos.length;
+
             moveDvdLogo(newDvd);
         }
 
