@@ -17,6 +17,8 @@
             font-family: 'Comic Sans MS', sans-serif;
             text-align: center;
             background-color: #f0f0f0;
+            background-image: url('https://example.com/your-uploaded-image.jpg'); /* Replace with your image URL */
+            background-size: cover;
             overflow: hidden;
         }
 
@@ -70,6 +72,20 @@
             "https://i.imgur.com/wzKESsR.jpeg"
         ];
 
+        // Array of DVD logo URLs
+        const dvdLogos = [
+            "https://media1.tenor.com/m/X3w-LOtBU-AAAAAd/roshhashanah-excited.gif",
+            "https://media1.tenor.com/m/XYPSFvI2MaIAAAAd/hahahahah-gahahahaha.gif",
+            "https://media1.tenor.com/m/MFkyVjPKRa8AAAAd/ok.gif"
+        ];
+
+        // Array of audio URLs
+        const audioUrls = [
+            "https://drive.google.com/file/d/1JwtTdT7w_sGpH_XlC7zKfsXPP5UL6uDr/view?usp=drive_link",
+            "https://drive.google.com/file/d/1ut8F7zOAU0B2UQhBRQGJ1K5Mjo4-EQ4l/view?usp=drive_link",
+            "https://drive.google.com/file/d/1velwswpHGMY5nAWhW3I4u1yR_O9dNDXB/view?usp=drive_link"
+        ];
+
         // Function to change the meme image
         function changeMeme() {
             const randomIndex = Math.floor(Math.random() * memes.length);
@@ -87,7 +103,8 @@
             newDvd.className = "dvd-logo";
             newDvd.style.left = Math.random() * (window.innerWidth - 200) + 'px';
             newDvd.style.top = Math.random() * (window.innerHeight - 200) + 'px';
-            newDvd.style.backgroundImage = "url('https://media1.tenor.com/m/X3w-LOtBU-AAAAAd/roshhashanah-excited.gif')";
+            const randomLogo = dvdLogos[Math.floor(Math.random() * dvdLogos.length)];
+            newDvd.style.backgroundImage = `url('${randomLogo}')`;
             document.body.appendChild(newDvd);
             moveDvdLogo(newDvd);
         }
@@ -127,7 +144,8 @@
             }
 
             // Play the new sound
-            currentAudio = new Audio('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3'); // Replace with your sound file link
+            const randomAudio = audioUrls[Math.floor(Math.random() * audioUrls.length)];
+            currentAudio = new Audio(randomAudio);
             currentAudio.play();
         }
 
