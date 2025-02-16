@@ -89,13 +89,50 @@
             newDvd.style.top = Math.random() * (window.innerHeight - 200) + 'px';
             newDvd.style.backgroundImage = "url('https://media1.tenor.com/m/X3w-LOtBU-AAAAAd/roshhashanah-excited.gif')";
             document.body.appendChild(newDvd);
+            moveDvdLogo(newDvd);
         }
+
+        // Function to move DVD logos
+        function moveDvdLogo(dvd) {
+            let x = Math.random() * (window.innerWidth - 200);
+            let y = Math.random() * (window.innerHeight - 200);
+            let dx = 2, dy = 2;
+
+            function animate() {
+                x += dx;
+                y += dy;
+
+                // Bounce off the edges
+                if (x + 200 >= window.innerWidth || x <= 0) dx = -dx;
+                if (y + 200 >= window.innerHeight || y <= 0) dy = -dy;
+
+                dvd.style.left = x + 'px';
+                dvd.style.top = y + 'px';
+
+                requestAnimationFrame(animate);
+            }
+
+            animate();
+        }
+
+        // Variable to store the current audio
+        let currentAudio = null;
 
         // Function to play a sound effect
         function playLigdasSound() {
-            const audio = new Audio('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3'); // Replace with your sound file link
-            audio.play();
+            // Stop the previous sound if it's playing
+            if (currentAudio) {
+                currentAudio.pause();
+                currentAudio.currentTime = 0;
+            }
+
+            // Play the new sound
+            currentAudio = new Audio('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3'); // Replace with your sound file link
+            currentAudio.play();
         }
+
+        // Move the initial DVD logo
+        moveDvdLogo(document.getElementById("dvdLogo"));
     </script>
 </body>
 </html>
