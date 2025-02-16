@@ -9,7 +9,8 @@
             font-family: Comic Sans MS, sans-serif;
             text-align: center;
             background-color: #f0f0f0;
-            transition: background 1s ease-in-out;
+            transition: background 0.5s ease-in-out;
+            overflow: hidden;
         }
         .meme-img {
             width: 300px;
@@ -25,15 +26,24 @@
             color: white;
             border-radius: 5px;
         }
+        .dvd-logo {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: url('https://i.imgur.com/OXq2A8P.gif') no-repeat center;
+            background-size: contain;
+        }
     </style>
 </head>
-<body onload="changeBackground()">
+<body onload="changeBackground(); moveDvdLogo();">
     <h1>Welcome to the Random Meme Zone!</h1>
     <img id="memeImage" class="meme-img" src="https://i.imgur.com/J3HkyGI.png" alt="Meme">
     <br>
     <button class="btn" onclick="changeMeme()">allagi parthenoy</button>
     <button class="btn" onclick="rickRoll()">Pame GTA RP magka moy</button>
     <button class="btn" onclick="alert('Gamo ton xristo kai tin panagia kai tin efthremia')">Doge Blessing</button>
+    
+    <div class="dvd-logo" id="dvdLogo"></div>
     
     <script>
         const memes = [
@@ -55,7 +65,23 @@
             const colors = ["#ff0000", "#ff8000", "#ffff00", "#80ff00", "#00ff80", "#0080ff", "#8000ff", "#ff0080"];
             setInterval(() => {
                 document.body.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-            }, 2000);
+            }, 1000);
+        }
+
+        function moveDvdLogo() {
+            const dvd = document.getElementById("dvdLogo");
+            let x = 100, y = 100;
+            let dx = 4, dy = 4;
+            function animate() {
+                x += dx;
+                y += dy;
+                if (x + 100 >= window.innerWidth || x <= 0) dx = -dx;
+                if (y + 100 >= window.innerHeight || y <= 0) dy = -dy;
+                dvd.style.left = x + 'px';
+                dvd.style.top = y + 'px';
+                requestAnimationFrame(animate);
+            }
+            animate();
         }
     </script>
 </body>
