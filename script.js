@@ -55,7 +55,7 @@ function spawnDvdLogo() {
 
 // Function to make it rain images
 function makeItRain() {
-    const rainImageURL = 'assets/image.png'; // Use the uploaded image
+    const rainImageURL = 'assets/jimaras.jpg'; // Use the uploaded image
     for (let i = 0; i < 30; i++) {
         const rainDrop = document.createElement("div");
         rainDrop.className = "rain-drop";
