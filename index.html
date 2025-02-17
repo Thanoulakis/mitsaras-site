@@ -3,39 +3,168 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Start a Project</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=PP+Telegraf&display=swap" rel="stylesheet">
+    <title>re trele</title>
+    <style>
+        /* Basic Reset */
+        body, h1, button, img, div {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body Styling */
+        body {
+            font-family: 'Comic Sans MS', sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+            background-image: url('https://i.imgur.com/nms09KJ.png'); /* Replace with your image URL */
+            background-size: 100% 100%; /* Stretch the background image to fit the whole background */
+            background-repeat: no-repeat;
+            overflow: hidden;
+            position: relative; /* Added for stacking context */
+        }
+
+        /* Meme Image Styling */
+        .meme-img {
+            width: 300px;
+            margin-top: 20px;
+            z-index: 2; /* Ensures meme images are above GIFs */
+            position: relative;
+        }
+
+        /* Button Styling */
+        .btn {
+            padding: 10px;
+            margin: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            background-color: #ff4500;
+            color: white;
+            border-radius: 5px;
+            z-index: 2; /* Ensures buttons are above GIFs */
+            position: relative;
+        }
+
+        /* DVD Logo Styling */
+        .dvd-logo {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            z-index: 1; /* Puts GIFs below other elements but above background */
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <div class="sidebar">
-            <h1>START A PROJECT</h1>
-            <p class="availability">Availability: February 2025</p>
-            <p class="connect">Connect: <br> hi@3200Kelvin.com <br> WhatsApp <br> Telegram</p>
-            <p class="socials">See our work: <br> Instagram <br> Behance <br> Dribbble</p>
-            <p class="locations">Valencia, Spain 18:30 <br> Boston, USA 12:30</p>
-        </div>
-        <div class="form-section">
-            <h2>Hi, 3200 Kelvin team.</h2>
-            <form>
-                <label>My name is <input type="text" placeholder="Jane Doe"></label>
-                <p>I'm reaching out because I'm looking to <input type="text" placeholder="design and develop"> a <input type="text" placeholder="landing page"> for <input type="text" placeholder="interior design studio based in Toronto">.</p>
-                <p>I already have:</p>
-                <ul>
-                    <li><input type="checkbox"> Branding style</li>
-                    <li><input type="checkbox"> Logo</li>
-                    <li><input type="checkbox"> Copy</li>
-                    <li><input type="checkbox"> Photos and videos</li>
-                    <li><input type="checkbox"> Target audience insights</li>
-                </ul>
-                <p>My budget is <input type="text" placeholder="EUR 5 000 - 8 000"></p>
-                <p>It would be perfect to launch the project in <input type="text" placeholder="3 weeks"></p>
-                <button type="submit">Send</button>
-            </form>
-        </div>
-    </div>
+    <h1 style="z-index: 2; position: relative;">Klepsame tis tirotreles apo ta lidl!</h1>
+    <img id="memeImage" class="meme-img" src="https://i.imgur.com/J3HkyGI.png" alt="Meme">
+    <br>
+    <button class="btn" onclick="changeMeme()">allagi parthenoy</button>
+    <button class="btn" onclick="xasisisisi()">Pame GTA RP magka moy</button>
+    <button class="btn" onclick="alert('Geia sou re Jimmara kala gamisa')">min</button>
+    <button class="btn" onclick="spawnDvdLogo()">Spawn More DVD GIFs</button>
+    <button class="btn" onclick="playLigdasSound()">Ligdas</button>
+
+    <!-- Static DVD Logo -->
+    <div id="dvdLogo" class="dvd-logo" style="left: 100px; top: 100px; background-image: url('https://media1.tenor.com/m/X3w-LOtBU-AAAAAd/roshhashanah-excited.gif');"></div>
+
+    <script>
+        // Array of meme images
+        const memes = [
+            "https://i.imgur.com/KrMLbOQ.jpeg",
+            "https://i.imgur.com/ISbie3F.jpeg",
+            "https://i.imgur.com/wzKESsR.jpeg",
+            "https://i.imgur.com/oMfy2ec.jpeg",
+            "https://i.imgur.com/3co8g0P.jpeg"
+        ];
+
+        // Array of DVD logo URLs
+        const dvdLogos = [
+            "https://media1.tenor.com/m/X3w-LOtBU-AAAAAd/roshhashanah-excited.gif",
+            "https://cdn.discordapp.com/attachments/1064922301591728329/1318559813067604000/bounce.gif?ex=67b286c5&is=67b13545&hm=877ba597ead702c6d33dffcfa07e53881b8eeae5ac6e2dc920e3e11ae305ecca&",
+            "https://media1.tenor.com/m/GAZlMVSWrY0AAAAd/nature-blue.gif"
+        ];
+
+        // Array of audio URLs
+        const audioUrls = [
+            "https://docs.google.com/uc?export=download&id=1JwtTdT7w_sGpH_XlC7zKfsXPP5UL6uDr", // Example modified link
+            "https://docs.google.com/uc?export=download&id=YOUR_OTHER_FILE_ID" // Replace with actual file IDs
+        ];
+
+        // Counter to keep track of the current GIF
+        let currentGifIndex = 0;
+
+        // Function to change the meme image
+        function changeMeme() {
+            const randomIndex = Math.floor(Math.random() * memes.length);
+            document.getElementById("memeImage").src = memes[randomIndex];
+        }
+
+        // Function to redirect to a YouTube video
+        function xasisisisi() {
+            window.location.href = "https://www.youtube.com/watch?v=odt6-6k6Aks";
+        }
+
+        // Function to spawn a new DVD logo in order
+        function spawnDvdLogo() {
+            const newDvd = document.createElement("div");
+            newDvd.className = "dvd-logo";
+            newDvd.style.left = Math.random() * (window.innerWidth - 200) + 'px';
+            newDvd.style.top = Math.random() * (window.innerHeight - 200) + 'px';
+            newDvd.style.backgroundImage = `url('${dvdLogos[currentGifIndex]}')`;
+            document.body.appendChild(newDvd);
+
+            // Update the GIF index to the next one
+            currentGifIndex = (currentGifIndex + 1) % dvdLogos.length;
+
+            moveDvdLogo(newDvd);
+        }
+
+        // Function to move DVD logos
+        function moveDvdLogo(dvd) {
+            let x = Math.random() * (window.innerWidth - 200);
+            let y = Math.random() * (window.innerHeight - 200);
+            let dx = 2, dy = 2;
+
+            function animate() {
+                x += dx;
+                y += dy;
+
+                // Bounce off the edges
+                if (x + 200 >= window.innerWidth || x <= 0) dx = -dx;
+                if (y + 200 >= window.innerHeight || y <= 0) dy = -dy;
+
+                dvd.style.left = x + 'px';
+                dvd.style.top = y + 'px';
+
+                requestAnimationFrame(animate);
+            }
+
+            animate();
+        }
+
+        // Variable to store the current audio
+        let currentAudio = null;
+
+        // Function to play a sound effect
+        function playLigdasSound() {
+            // Stop the previous sound if it's playing
+            if (currentAudio) {
+                currentAudio.pause();
+                currentAudio.currentTime = 0;
+            }
+
+            // Play the new sound
+            const randomAudio = audioUrls[Math.floor(Math.random() * audioUrls.length)];
+            currentAudio = new Audio(randomAudio);
+            currentAudio.play();
+        }
+
+        // Move the initial DVD logo
+        moveDvdLogo(document.getElementById("dvdLogo"));
+    </script>
 </body>
 </html>
