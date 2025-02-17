@@ -31,6 +31,35 @@ body {
     z-index: 2; /* Ensures meme images are above GIFs */
     position: relative;
     max-width: 100%; /* Ensure it doesn't overflow on smaller screens */
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+}
+
+/* Meme Image Transition Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideInLeft {
+    from { transform: translateX(-100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideInRight {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes zoomIn {
+    from { transform: scale(0); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* Apply a random animation to the meme image */
+.meme-img.transition {
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
 }
 
 /* Button Styling */
@@ -73,6 +102,18 @@ body {
     background-position: center;
     z-index: 1; /* Puts GIFs below other elements but above background */
     transition: transform 0.2s ease-in-out; /* Smooth movement */
+    opacity: 0; /* Start hidden for spawn animation */
+    transform: scale(0); /* Start small for spawn animation */
+}
+
+/* Spawn Animation for DVD GIFs */
+@keyframes spawn {
+    from { opacity: 0; transform: scale(0); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.dvd-logo.spawn {
+    animation: spawn 0.5s ease-in-out forwards;
 }
 
 /* Responsive Adjustments */
