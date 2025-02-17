@@ -106,3 +106,7 @@ function moveDvdLogo(dvd) {
 // Ensure DVD logo movement starts
 const initialDvdLogo = document.getElementById("dvdLogo");
 if (initialDvdLogo) moveDvdLogo(initialDvdLogo);
+
+function openNewTab() {
+    window.open("https://www.youtube.com/watch?v=odt6-6k6Aks", "_blank");
+}
