@@ -9,9 +9,9 @@ body, h1, button, img, div {
 body {
     font-family: 'Comic Sans MS', sans-serif;
     text-align: center;
-    background-color: #f0f0f0; /* Fallback background color */
-    background-image: url('https://i.imgur.com/nms09KJ.png'); /* Replace with your image URL */
-    background-size: cover; /* Fullscreen Background */
+    background-color: #f0f0f0;
+    background-image: url('https://i.imgur.com/nms09KJ.png');
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     overflow: hidden;
@@ -21,16 +21,16 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    position: relative; /* Added for stacking context */
+    position: relative;
 }
 
 /* Meme Image Styling */
 .meme-img {
     width: 300px;
     margin-top: 20px;
-    z-index: 2; /* Ensures meme images are above GIFs */
+    z-index: 2;
     position: relative;
-    max-width: 100%; /* Ensure it doesn't overflow on smaller screens */
+    max-width: 100%;
     opacity: 1;
     transition: opacity 0.5s ease-in-out;
 }
@@ -75,24 +75,24 @@ body {
     background-color: #ff4500;
     color: white;
     border-radius: 5px;
-    z-index: 2; /* Ensures buttons are above GIFs */
+    z-index: 2;
     position: relative;
     transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .btn:hover {
     background-color: #d63b00;
-    transform: translateY(-2px); /* Slight lift on hover */
+    transform: translateY(-2px);
 }
 
 .btn:active {
-    transform: translateY(0); /* Reset on click */
+    transform: translateY(0);
 }
 
 .btn:focus {
     outline: none;
-    box-shadow: 0 0 0 3px rgba(255, 69, 0, 0.5); /* Focus state for accessibility */
+    box-shadow: 0 0 0 3px rgba(255, 69, 0, 0.5);
 }
 
 /* DVD Logo Styling */
@@ -103,10 +103,10 @@ body {
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    z-index: 1; /* Puts GIFs below other elements but above background */
-    transition: transform 0.2s ease-in-out; /* Smooth movement */
-    opacity: 0; /* Start hidden for spawn animation */
-    transform: scale(0); /* Start small for spawn animation */
+    z-index: 1;
+    transition: transform 0.2s ease-in-out;
+    opacity: 0;
+    transform: scale(0);
 }
 
 /* Spawn Animation for DVD GIFs */
@@ -141,6 +141,6 @@ body {
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    z-index: 3; /* Ensure rain drops are above other elements */
+    z-index: 3;
     animation: rain 5s linear infinite, shake 0.5s linear infinite;
 }

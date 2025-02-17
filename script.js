@@ -39,12 +39,16 @@ function updateDots(activeIndex) {
 
 // Function to spawn a new DVD logo cycling through different images
 function spawnDvdLogo() {
+    const dvdContainer = document.getElementById("dvdContainer");
+    if (!dvdContainer) return;
+
     const newDvd = document.createElement("div");
     newDvd.className = "dvd-logo spawn";
     newDvd.style.left = Math.random() * (window.innerWidth - 200) + 'px';
     newDvd.style.top = Math.random() * (window.innerHeight - 200) + 'px';
     newDvd.style.backgroundImage = `url('${dvdLogos[currentDvdIndex]}')`;
-    document.body.appendChild(newDvd);
+    dvdContainer.appendChild(newDvd);
+
     moveDvdLogo(newDvd);
     currentDvdIndex = (currentDvdIndex + 1) % dvdLogos.length;
 }
@@ -86,6 +90,8 @@ function moveDvdLogo(dvd) {
 // Initialize dots navigation
 (function createDots() {
     const dotsContainer = document.getElementById('dots-container');
+    if (!dotsContainer) return;
+    
     memes.forEach((_, index) => {
         const dot = document.createElement('span');
         dot.classList.add('dot');
@@ -97,5 +103,6 @@ function moveDvdLogo(dvd) {
     });
 })();
 
-// Move the initial DVD logo
-moveDvdLogo(document.getElementById("dvdLogo"));
+// Ensure DVD logo movement starts
+const initialDvdLogo = document.getElementById("dvdLogo");
+if (initialDvdLogo) moveDvdLogo(initialDvdLogo);
