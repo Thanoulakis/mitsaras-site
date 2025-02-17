@@ -15,17 +15,23 @@
     <div id="dots-container"></div>
     <div class="button-container">
         <button class="btn" onclick="changeMeme()">Allagi Parthenoy</button>
-        <button class="btn" onclick="openGtaRp()">Pame GTA RP</button>
+        <button id="pameGtaRp" onclick="openNewTab()">Pame GTA RP</button>
         <button class="btn" onclick="alert('Geia sou re Jimmara kala gamisa')">MIN TO PATISEIS</button>
         <button class="btn" onclick="spawnDvdLogo()">Overstimulation</button>
-        <button class="btn" onclick="playLigdasSound()">Ligdas</button>
+        <!-- <button class="btn" onclick="playLigdasSound()">Ligdas</button> -->
         <button class="btn" onclick="makeItRain()">Make it Rain</button>
     </div>
 
-    
-    <!-- Static DVD Logo -->
-    <!-- DVD Logo Container -->
-<div id="dvdContainer"></div>
+    <!-- Add this section for the image selector -->
+    <div id="thumbnail-container">
+        <img class="thumbnail" src="https://i.imgur.com/KrMLbOQ.jpeg" alt="Thumbnail 1" onclick="selectImage(0)">
+        <img class="thumbnail" src="https://i.imgur.com/ISbie3F.jpeg" alt="Thumbnail 2" onclick="selectImage(1)">
+        <img class="thumbnail" src="https://i.imgur.com/wzKESsR.jpeg" alt="Thumbnail 3" onclick="selectImage(2)">
+        <img class="thumbnail" src="https://i.imgur.com/oMfy2ec.jpeg" alt="Thumbnail 4" onclick="selectImage(3)">
+        <img class="thumbnail" src="https://i.imgur.com/3co8g0P.jpeg" alt="Thumbnail 5" onclick="selectImage(4)">
+    </div>
+
+    <div id="dvdContainer"></div>
 
 </body>
 </html>

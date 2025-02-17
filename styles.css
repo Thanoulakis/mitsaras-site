@@ -25,7 +25,7 @@ body {
 }
 
 /* Meme Image Styling */
-.meme-img {
+.meme-img, #mainImage {
     width: 300px;
     margin-top: 20px;
     z-index: 2;
@@ -143,4 +143,24 @@ body {
     background-position: center;
     z-index: 3;
     animation: rain 5s linear infinite, shake 0.5s linear infinite;
+}
+
+/* Thumbnail Container Styling */
+#thumbnail-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+/* Thumbnail Image Styling */
+.thumbnail {
+    width: 50px;
+    height: auto;
+    cursor: pointer;
+    transition: opacity 0.5s;
+}
+
+.thumbnail:hover {
+    opacity: 0.7;
 }
