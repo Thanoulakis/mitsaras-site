@@ -36,6 +36,11 @@ function changeMeme() {
     }, 500); // Wait for the fade-out to complete
 }
 
+// Function to redirect to a YouTube video
+function xasisisisi() {
+    window.open("https://www.youtube.com/watch?v=odt6-6k6Aks", "_blank");
+}
+
 // Function to spawn a new DVD logo with a spawn transition
 function spawnDvdLogo() {
     const newDvd = document.createElement("div");
