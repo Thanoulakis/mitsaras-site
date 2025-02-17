@@ -1,3 +1,5 @@
+// Optimized script.js
+
 // Array of meme images (now in order)
 const memes = [
     "https://i.imgur.com/KrMLbOQ.jpeg",
@@ -8,8 +10,6 @@ const memes = [
 ];
 let currentMemeIndex = 0;
 
-
-
 // Array of DVD logo GIFs (cycled properly)
 const dvdLogos = [
     "https://media1.tenor.com/m/X3w-LOtBU-AAAAAd/roshhashanah-excited.gif",
@@ -17,16 +17,6 @@ const dvdLogos = [
     "https://media1.tenor.com/m/4y5lX0H7-kAAAAAd/dvd-logo.gif"
 ];
 let currentDvdIndex = 0;
-
-
-function selectImage(index) {
-    const mainImage = document.getElementById("mainImage");
-    mainImage.style.opacity = 0;
-    setTimeout(() => {
-        mainImage.src = memes[index];
-        mainImage.style.opacity = 1;
-    }, 500);
-}
 
 // Function to change the meme image in order
 function changeMeme() {
@@ -56,11 +46,27 @@ function spawnDvdLogo() {
     newDvd.className = "dvd-logo spawn";
     newDvd.style.left = Math.random() * (window.innerWidth - 200) + 'px';
     newDvd.style.top = Math.random() * (window.innerHeight - 200) + 'px';
-    newDvd.style.backgroundImage = `url('${dvdLogos[currentDvdIndex]}')`;
+    newDvd.style.backgroundImage = `url('${dvdLogos[currentDvdIndex]}')`;  // Fix here
     dvdContainer.appendChild(newDvd);
 
     moveDvdLogo(newDvd);
-    currentDvdIndex = (currentDvdIndex + 1) % dvdLogos.length;
+    currentDvdIndex = (currentDvdIndex + 1) % dvdLogos.length;  // Update the index after setting the image
+}
+
+// Function to make it rain images
+function makeItRain() {
+    const rainImageURL = '/assets/favicon-32x32.png'; // Use the uploaded image
+    for (let i = 0; i < 30; i++) {
+        const rainDrop = document.createElement("div");
+        rainDrop.className = "rain-drop";
+        rainDrop.style.left = Math.random() * window.innerWidth + 'px';
+        rainDrop.style.top = '-50px';
+        rainDrop.style.backgroundImage = `url('${rainImageURL}')`;
+        document.body.appendChild(rainDrop);
+        rainDrop.style.animation = "rain 3s linear infinite";
+
+        rainDrop.addEventListener('animationend', () => rainDrop.remove());
+    }
 }
 
 // Function to move DVD logos
@@ -80,6 +86,22 @@ function moveDvdLogo(dvd) {
     }
     animate();
 }
+
+// Initialize dots navigation
+(function createDots() {
+    const dotsContainer = document.getElementById('dots-container');
+    if (!dotsContainer) return;
+    
+    memes.forEach((_, index) => {
+        const dot = document.createElement('span');
+        dot.classList.add('dot');
+        dot.addEventListener('click', () => {
+            currentMemeIndex = index;
+            changeMeme();
+        });
+        dotsContainer.appendChild(dot);
+    });
+})();
 
 // Ensure DVD logo movement starts
 const initialDvdLogo = document.getElementById("dvdLogo");
