@@ -1,63 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script src="script.js"></script>
+    <script src="script.js"></script> <!-- External JS file -->
     <link rel="stylesheet" href="styles.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>re trele</title>
     <style>
-        /* Basic Reset */
-        body, h1, button, img, div {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        /* Body Styling */
-        body {
-            font-family: 'Comic Sans MS', sans-serif;
-            text-align: center;
-            background-color: #f0f0f0;
-            background-image: url('https://i.imgur.com/nms09KJ.png'); /* Replace with your image URL */
-            background-size: 100% 100%; /* Stretch the background image to fit the whole background */
-            background-repeat: no-repeat;
-            overflow: hidden;
-            position: relative; /* Added for stacking context */
-        }
-
-        /* Meme Image Styling */
-        .meme-img {
-            width: 300px;
-            margin-top: 20px;
-            z-index: 2; /* Ensures meme images are above GIFs */
-            position: relative;
-        }
-
-        /* Button Styling */
-        .btn {
-            padding: 10px;
-            margin: 10px;
-            font-size: 16px;
-            cursor: pointer;
-            border: none;
-            background-color: #ff4500;
-            color: white;
-            border-radius: 5px;
-            z-index: 2; /* Ensures buttons are above GIFs */
-            position: relative;
-        }
-
-        /* DVD Logo Styling */
-        .dvd-logo {
-            position: absolute;
-            width: 200px;
-            height: 200px;
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center;
-            z-index: 1; /* Puts GIFs below other elements but above background */
-        }
+        /* Your existing CSS styles */
     </style>
 </head>
 <body>
@@ -88,12 +38,6 @@
             "https://media1.tenor.com/m/X3w-LOtBU-AAAAAd/roshhashanah-excited.gif",
             "https://cdn.discordapp.com/attachments/1064922301591728329/1318559813067604000/bounce.gif?ex=67b286c5&is=67b13545&hm=877ba597ead702c6d33dffcfa07e53881b8eeae5ac6e2dc920e3e11ae305ecca&",
             "https://media1.tenor.com/m/GAZlMVSWrY0AAAAd/nature-blue.gif"
-        ];
-
-        // Array of audio URLs
-        const audioUrls = [
-            "https://docs.google.com/uc?export=download&id=1JwtTdT7w_sGpH_XlC7zKfsXPP5UL6uDr", // Example modified link
-            "https://docs.google.com/uc?export=download&id=YOUR_OTHER_FILE_ID" // Replace with actual file IDs
         ];
 
         // Counter to keep track of the current GIF
@@ -146,23 +90,6 @@
             }
 
             animate();
-        }
-
-        // Variable to store the current audio
-        let currentAudio = null;
-
-        // Function to play a sound effect
-        function playLigdasSound() {
-            // Stop the previous sound if it's playing
-            if (currentAudio) {
-                currentAudio.pause();
-                currentAudio.currentTime = 0;
-            }
-
-            // Play the new sound
-            const randomAudio = audioUrls[Math.floor(Math.random() * audioUrls.length)];
-            currentAudio = new Audio(randomAudio);
-            currentAudio.play();
         }
 
         // Move the initial DVD logo
