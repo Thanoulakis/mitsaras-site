@@ -33,6 +33,44 @@ function changeMeme() {
         memeImage.style.opacity = 1; // Fade in the new image
         memeImage.classList.add("transition");
         memeImage.style.animationName = randomTransition; // Apply random transition
+        updateDots(randomIndex); // Update dots to indicate the current image
+    }, 500); // Wait for the fade-out to complete
+}
+
+// Function to update dots to indicate the current image
+function updateDots(activeIndex) {
+    const dots = document.querySelectorAll('.dot');
+    dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === activeIndex);
+    });
+}
+
+// Function to create dot navigation
+function createDots() {
+    const dotsContainer = document.getElementById('dots-container');
+    memes.forEach((_, index) => {
+        const dot = document.createElement('span');
+        dot.classList.add('dot');
+        dot.addEventListener('click', () => {
+            changeMemeByIndex(index);
+        });
+        dotsContainer.appendChild(dot);
+    });
+}
+
+// Function to change the meme image by index
+function changeMemeByIndex(index) {
+    const memeImage = document.getElementById("memeImage");
+    const randomTransition = transitions[Math.floor(Math.random() * transitions.length)];
+
+    // Apply the transition animation
+    memeImage.style.opacity = 0; // Fade out the current image
+    setTimeout(() => {
+        memeImage.src = memes[index]; // Change the image
+        memeImage.style.opacity = 1; // Fade in the new image
+        memeImage.classList.add("transition");
+        memeImage.style.animationName = randomTransition; // Apply random transition
+        updateDots(index); // Update dots to indicate the current image
     }, 500); // Wait for the fade-out to complete
 }
 
@@ -112,6 +150,9 @@ function makeItRain() {
         });
     }
 }
+
+// Initialize the dots navigation
+createDots();
 
 // Move the initial DVD logo
 moveDvdLogo(document.getElementById("dvdLogo"));

@@ -35,6 +35,28 @@ body {
     transition: opacity 0.5s ease-in-out;
 }
 
+/* Dots Container Styling */
+#dots-container {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+}
+
+/* Dot Styling */
+.dot {
+    height: 15px;
+    width: 15px;
+    margin: 0 5px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.active {
+    background-color: #ff4500;
+}
+
 /* Button Container Styling */
 .button-container {
     display: flex;
