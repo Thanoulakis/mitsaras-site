@@ -4,6 +4,7 @@ body, h1, button, img, div {
     padding: 0;
     box-sizing: border-box;
 }
+
 /* Body Styling */
 body {
     font-family: 'Comic Sans MS', sans-serif;
@@ -22,6 +23,7 @@ body {
     justify-content: center;
     position: relative; /* Added for stacking context */
 }
+
 /* Meme Image Styling */
 .meme-img {
     width: 300px;
@@ -32,6 +34,7 @@ body {
     opacity: 1;
     transition: opacity 0.5s ease-in-out;
 }
+
 /* Button Container Styling */
 .button-container {
     display: flex;
@@ -39,6 +42,7 @@ body {
     flex-wrap: wrap;
     margin: 20px 0;
 }
+
 /* Button Styling */
 .btn {
     padding: 10px 20px;
@@ -59,13 +63,16 @@ body {
     background-color: #d63b00;
     transform: translateY(-2px); /* Slight lift on hover */
 }
+
 .btn:active {
     transform: translateY(0); /* Reset on click */
 }
+
 .btn:focus {
     outline: none;
     box-shadow: 0 0 0 3px rgba(255, 69, 0, 0.5); /* Focus state for accessibility */
 }
+
 /* DVD Logo Styling */
 .dvd-logo {
     position: absolute;
@@ -85,13 +92,23 @@ body {
     from { opacity: 0; transform: scale(0); }
     to { opacity: 1; transform: scale(1); }
 }
+
 .dvd-logo.spawn {
     animation: spawn 0.5s ease-in-out forwards;
 }
+
 /* Rain Animation */
 @keyframes rain {
-    from { top: -100px; }
-    to { top: 100vh; }
+    from { top: -100px; right: 0; }
+    to { top: 100vh; right: 100vw; }
+}
+
+/* Shake Animation */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
 }
 
 /* Rain Drop Styling */
@@ -103,5 +120,5 @@ body {
     background-repeat: no-repeat;
     background-position: center;
     z-index: 3; /* Ensure rain drops are above other elements */
-    animation: rain 5s linear infinite;
+    animation: rain 5s linear infinite, shake 0.5s linear infinite;
 }

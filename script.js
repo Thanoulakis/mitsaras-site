@@ -13,8 +13,8 @@ const transitions = ["fadeIn", "slideInLeft", "slideInRight", "zoomIn"];
 // Array of DVD logo URLs
 const dvdLogos = [
     "https://media1.tenor.com/m/X3w-LOtBU-AAAAAd/roshhashanah-excited.gif",
-    "https://cdn.discordapp.com/attachments/1064922301591728329/1318559813067604000/bounce.gif?ex=67b286c5&is=67b13545&hm=877ba597ead702c6d33dffcfa07e53881b8eeae5ac6e2dc920e3e11ae305ecca&",
-    "https://media1.tenor.com/m/GAZlMVSWrY0AAAAd/nature-blue.gif"
+    "https://media1.tenor.com/m/V2NAOALbN-AAAAAd/dvd-bouncing-logo.gif",
+    "https://media1.tenor.com/m/4y5lX0H7-kAAAAAd/dvd-logo.gif"
 ];
 
 // Counter to keep track of the current GIF
@@ -67,6 +67,7 @@ function moveDvdLogo(dvd) {
 
         dvd.style.left = x + 'px';
         dvd.style.top = y + 'px';
+
         requestAnimationFrame(animate);
     }
 
@@ -92,11 +93,11 @@ function playLigdasSound() {
 
 // Function to create the rain animation
 function makeItRain() {
-    const rainImageURL = '/assets/jimaras.jpg'; // Replace with the path to your image in the assets folder
+    const rainImageURL = '/assets/your-image.png'; // Replace with the path to your image in the assets folder
     for (let i = 0; i < 30; i++) { // Adjust the number of rain drops as needed
         const rainDrop = document.createElement("div");
         rainDrop.className = "rain-drop";
-        rainDrop.style.left = Math.random() * window.innerWidth + 'px';
+        rainDrop.style.right = Math.random() * window.innerWidth + 'px'; // Start from random right positions
         rainDrop.style.backgroundImage = `url('${rainImageURL}')`;
         document.body.appendChild(rainDrop);
 
