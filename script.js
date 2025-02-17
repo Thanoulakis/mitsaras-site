@@ -1,4 +1,3 @@
-// Array of meme images (now in order)
 const memes = [
     "https://i.imgur.com/KrMLbOQ.jpeg",
     "https://i.imgur.com/ISbie3F.jpeg",
@@ -6,48 +5,38 @@ const memes = [
     "https://i.imgur.com/oMfy2ec.jpeg",
     "https://i.imgur.com/3co8g0P.jpeg"
 ];
-let currentMemeIndex = 0;
-
-
-
-// Array of DVD logo GIFs (cycled properly)
-const dvdLogos = [
-    "https://media1.tenor.com/m/X3w-LOtBU-AAAAAd/roshhashanah-excited.gif",
-    "https://media1.tenor.com/m/V2NAOALbN-AAAAAd/dvd-bouncing-logo.gif",
-    "https://media1.tenor.com/m/4y5lX0H7-kAAAAAd/dvd-logo.gif"
-];
-let currentDvdIndex = 0;
-
 
 function selectImage(index) {
-    const mainImage = document.getElementById("mainImage");
-    mainImage.style.opacity = 0;
+    const memeImage = document.getElementById("memeImage");
+    memeImage.style.opacity = 0;
     setTimeout(() => {
-        mainImage.src = memes[index];
-        mainImage.style.opacity = 1;
+        memeImage.src = memes[index];
+        memeImage.style.opacity = 1;
+
+        // Remove the "Change Image" button
+        const changeImageButton = document.getElementById("changeImageButton");
+        if (changeImageButton) {
+            changeImageButton.remove();
+        }
     }, 500);
 }
 
-// Function to change the meme image in order
+// Existing code...
+
+function openNewTab() {
+    window.open("https://www.youtube.com/watch?v=odt6-6k6Aks", "_blank");
+}
+
 function changeMeme() {
     const memeImage = document.getElementById("memeImage");
     memeImage.style.opacity = 0;
     setTimeout(() => {
         memeImage.src = memes[currentMemeIndex];
         memeImage.style.opacity = 1;
-        updateDots(currentMemeIndex);
         currentMemeIndex = (currentMemeIndex + 1) % memes.length;
     }, 500);
 }
 
-// Function to update dots indicator
-function updateDots(activeIndex) {
-    document.querySelectorAll('.dot').forEach((dot, index) => {
-        dot.classList.toggle('active', index === activeIndex);
-    });
-}
-
-// Function to spawn a new DVD logo cycling through different images
 function spawnDvdLogo() {
     const dvdContainer = document.getElementById("dvdContainer");
     if (!dvdContainer) return;
@@ -63,7 +52,6 @@ function spawnDvdLogo() {
     currentDvdIndex = (currentDvdIndex + 1) % dvdLogos.length;
 }
 
-// Function to move DVD logos
 function moveDvdLogo(dvd) {
     let x = Math.random() * (window.innerWidth - 200);
     let y = Math.random() * (window.innerHeight - 200);
@@ -81,10 +69,17 @@ function moveDvdLogo(dvd) {
     animate();
 }
 
-// Ensure DVD logo movement starts
-const initialDvdLogo = document.getElementById("dvdLogo");
-if (initialDvdLogo) moveDvdLogo(initialDvdLogo);
+function makeItRain() {
+    const rainImageURL = '/assets/favicon-32x32.png';
+    for (let i = 0; i < 30; i++) {
+        const rainDrop = document.createElement("div");
+        rainDrop.className = "rain-drop";
+        rainDrop.style.left = Math.random() * window.innerWidth + 'px';
+        rainDrop.style.top = '-50px';
+        rainDrop.style.backgroundImage = `url('${rainImageURL}')`;
+        document.body.appendChild(rainDrop);
+        rainDrop.style.animation = "rain 3s linear infinite";
 
-function openNewTab() {
-    window.open("https://www.youtube.com/watch?v=odt6-6k6Aks", "_blank");
+        rainDrop.addEventListener('animationend', () => rainDrop.remove());
+    }
 }
