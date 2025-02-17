@@ -4,7 +4,6 @@ body, h1, button, img, div {
     padding: 0;
     box-sizing: border-box;
 }
-
 /* Body Styling */
 body {
     font-family: 'Comic Sans MS', sans-serif;
@@ -23,7 +22,6 @@ body {
     justify-content: center;
     position: relative; /* Added for stacking context */
 }
-
 /* Meme Image Styling */
 .meme-img {
     width: 300px;
@@ -34,34 +32,13 @@ body {
     opacity: 1;
     transition: opacity 0.5s ease-in-out;
 }
-
-/* Meme Image Transition Animations */
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+/* Button Container Styling */
+.button-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 20px 0;
 }
-
-@keyframes slideInLeft {
-    from { transform: translateX(-100%); opacity: 0; }
-    to { transform: translateX(0); opacity: 1; }
-}
-
-@keyframes slideInRight {
-    from { transform: translateX(100%); opacity: 0; }
-    to { transform: translateX(0); opacity: 1; }
-}
-
-@keyframes zoomIn {
-    from { transform: scale(0); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
-}
-
-/* Apply a random animation to the meme image */
-.meme-img.transition {
-    animation-duration: 0.5s;
-    animation-fill-mode: forwards;
-}
-
 /* Button Styling */
 .btn {
     padding: 10px 20px;
@@ -82,16 +59,13 @@ body {
     background-color: #d63b00;
     transform: translateY(-2px); /* Slight lift on hover */
 }
-
 .btn:active {
     transform: translateY(0); /* Reset on click */
 }
-
 .btn:focus {
     outline: none;
     box-shadow: 0 0 0 3px rgba(255, 69, 0, 0.5); /* Focus state for accessibility */
 }
-
 /* DVD Logo Styling */
 .dvd-logo {
     position: absolute;
@@ -111,40 +85,23 @@ body {
     from { opacity: 0; transform: scale(0); }
     to { opacity: 1; transform: scale(1); }
 }
-
 .dvd-logo.spawn {
     animation: spawn 0.5s ease-in-out forwards;
 }
-
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-    .meme-img {
-        width: 200px; /* Smaller image for smaller screens */
-    }
-
-    .btn {
-        padding: 8px 16px;
-        font-size: 14px; /* Smaller buttons for smaller screens */
-    }
-
-    .dvd-logo {
-        width: 150px;
-        height: 150px; /* Smaller DVD logos for smaller screens */
-    }
+/* Rain Animation */
+@keyframes rain {
+    from { top: -100px; }
+    to { top: 100vh; }
 }
 
-@media (max-width: 480px) {
-    .meme-img {
-        width: 150px; /* Even smaller image for mobile */
-    }
-
-    .btn {
-        padding: 6px 12px;
-        font-size: 12px; /* Smaller buttons for mobile */
-    }
-
-    .dvd-logo {
-        width: 100px;
-        height: 100px; /* Smaller DVD logos for mobile */
-    }
+/* Rain Drop Styling */
+.rain-drop {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 3; /* Ensure rain drops are above other elements */
+    animation: rain 5s linear infinite;
 }
